@@ -1,10 +1,8 @@
 # ----------------- FUNCIONES ----------------#
-
 use universitysql;
 
 #1
 DELIMITER //
-
 CREATE FUNCTION dept_count(dept_name VARCHAR(20))
 RETURNS INT
 DETERMINISTIC
@@ -16,20 +14,16 @@ BEGIN
     WHERE instructor.dept_name=dept_name;
     RETURN d_count;
 END//
-
 DELIMITER ;
-
 select dept_name, budget from department where dept_count(dept_name)>2;
 
 #2
 DELIMITER //
-
 CREATE FUNCTION budget_level(budget DECIMAL(12,2))
 RETURNS VARCHAR(20)
 DETERMINISTIC
 BEGIN
     DECLARE budgetlevel VARCHAR(20);
-
     IF budget<60000 THEN
         SET budgetlevel='PLATINUM';
     ELSEIF budget>=60000 AND budget<=90000 THEN
@@ -37,24 +31,19 @@ BEGIN
     ELSEIF budget>90000 THEN
         SET budgetlevel='GOLD';
     END IF;
-
     RETURN budgetlevel;
 END//
-
 DELIMITER ;
-
 select dept_name, budget_level (budget) from department;
 
 #3
 DELIMITER //
-
 CREATE FUNCTION grade_to_number(grade VARCHAR(3))
 RETURNS INT
 DETERMINISTIC
 BEGIN
     DECLARE num_value INT;
     SET num_value=0;
-
     IF grade='A+' THEN
         SET num_value=10;
     ELSEIF grade='A' THEN
@@ -95,7 +84,6 @@ BEGIN
 
     RETURN num_value;
 END//
-
 DELIMITER ;
 select ID, sum(grade_to_number(grade)) as Nota from takes group by ID;
 
@@ -128,15 +116,12 @@ BEGIN
 END//
 DELIMITER ;
 
-SELECT s.name AS student_name,
-	d.dept_name AS department_name,
-    course_count(s.ID) AS number_of_courses_taken
+SELECT SUM(course_count(s.ID)) AS total_courses_for_physics
 FROM student s
-JOIN department d ON s.dept_name=d.dept_name
-WHERE s.dept_name='Physics';
+WHERE s.dept_name = 'Physics';
+
 
 #8
-
 SELECT id,
 CASE semester
     WHEN 'Spring' THEN 'Primavera'
@@ -165,3 +150,4 @@ DROP FUNCTION IF EXISTS time_sum;
 
 insert into time_slot values( "H" , "M" , "10:00:00", "10:50:00");
 SELECT course_id, time_sum(time_slot_id) FROM section WHERE year = 2009;
+

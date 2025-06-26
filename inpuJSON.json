@@ -1,0 +1,162 @@
+{
+  "students": [
+    {
+      "ID": "00128",
+      "name": "Zhang",
+      "dept_name": "Comp. Sci.",
+      "tot_cred": 102
+    },
+    {
+      "ID": "12345",
+      "name": "Shankar",
+      "dept_name": "Comp. Sci.",
+      "tot_cred": 32
+    },
+    {
+      "ID": "19991",
+      "name": "Brandt",
+      "dept_name": "History",
+      "tot_cred": 80
+    },
+    {
+      "ID": "23121",
+      "name": "Chavez",
+      "dept_name": "Finance",
+      "tot_cred": 110
+    },
+    {
+      "ID": "44553",
+      "name": "Peltier",
+      "dept_name": "Physics",
+      "tot_cred": 56
+    },
+    {
+      "ID": "45678",
+      "name": "Levy",
+      "dept_name": "Physics",
+      "tot_cred": 46
+    },
+    {
+      "ID": "54321",
+      "name": "Williams",
+      "dept_name": "Comp. Sci.",
+      "tot_cred": 54
+    },
+    {
+      "ID": "55739",
+      "name": "Sanchez",
+      "dept_name": "Music",
+      "tot_cred": 38
+    },
+    {
+      "ID": "70557",
+      "name": "Snow",
+      "dept_name": "Physics",
+      "tot_cred": 0
+    },
+    {
+      "ID": "76543",
+      "name": "Brown",
+      "dept_name": "Comp. Sci.",
+      "tot_cred": 58
+    },
+    {
+      "ID": "76653",
+      "name": "Aoi",
+      "dept_name": "Elec. Eng.",
+      "tot_cred": 60
+    },
+    {
+      "ID": "98765",
+      "name": "Bourikas",
+      "dept_name": "Elec. Eng.",
+      "tot_cred": 98
+    },
+    {
+      "ID": "98988",
+      "name": "Tanaka",
+      "dept_name": "Biology",
+      "tot_cred": 120
+    }
+  ],
+  "courses": [
+    {
+      "course_id": "BIO-101",
+      "title": "Intro. to Biology",
+      "dept_name": "Biology",
+      "credits": 4
+    },
+    {
+      "course_id": "BIO-301",
+      "title": "Genetics",
+      "dept_name": "Biology",
+      "credits": 4
+    },
+    {
+      "course_id": "BIO-399",
+      "title": "Computational Biology",
+      "dept_name": "Biology",
+      "credits": 3
+    },
+    {
+      "course_id": "CS-101",
+      "title": "Intro. to Computer Science",
+      "dept_name": "Comp. Sci.",
+      "credits": 4
+    },
+    {
+      "course_id": "CS-190",
+      "title": "Game Design",
+      "dept_name": "Comp. Sci.",
+      "credits": 4
+    },
+    {
+      "course_id": "CS-315",
+      "title": "Robotics",
+      "dept_name": "Comp. Sci.",
+      "credits": 3
+    },
+    {
+      "course_id": "CS-319",
+      "title": "Image Processing",
+      "dept_name": "Comp. Sci.",
+      "credits": 3
+    },
+    {
+      "course_id": "CS-347",
+      "title": "Database System Concepts",
+      "dept_name": "Comp. Sci.",
+      "credits": 3
+    },
+    {
+      "course_id": "EE-181",
+      "title": "Intro. to Digital Systems",
+      "dept_name": "Comp. Sci.",
+      "credits": 3
+    },
+    {
+      "course_id": "FIN-201",
+      "title": "Investment Banking",
+      "dept_name": "Finance",
+      "credits": 3
+    },
+    {
+      "course_id": "HIS-351",
+      "title": "World History",
+      "dept_name": "History",
+      "credits": 3
+    },
+    {
+      "course_id": "MU-199",
+      "title": "Music Video Production",
+      "dept_name": "Music",
+      "credits": 3
+    },
+    {
+      "course_id": "PHY-101",
+      "title": "Physical Principles",
+      "dept_name": "Physics",
+      "credits": 4
+    }
+  ]
+}

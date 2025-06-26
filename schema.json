@@ -1,0 +1,80 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "University Data Schema",
+  "description": "Schema for Student and Course data in the University database",
+  "type": "object",
+  "properties": {
+    "students": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "ID": {
+            "type": "string",
+            "pattern": "^[0-9]{5}$",
+            "description": "Unique identifier for the student"
+          },
+          "name": {
+            "type": "string",
+            "maxLength": 20,
+            "description": "Name of the student"
+          },
+          "dept_name": {
+            "type": "string",
+            "maxLength": 20,
+            "description": "Name of the department the student belongs to"
+          },
+          "tot_cred": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 999,
+            "description": "Total credits earned by the student"
+          }
+        },
+        "required": [
+          "ID",
+          "name"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "courses": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "course_id": {
+            "type": "string",
+            "maxLength": 8,
+            "description": "Unique identifier for the course"
+          },
+          "title": {
+            "type": "string",
+            "maxLength": 50,
+            "description": "Title of the course"
+          },
+          "dept_name": {
+            "type": "string",
+            "maxLength": 20,
+            "description": "Name of the department offering the course"
+          },
+          "credits": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 99,
+            "description": "Credits for the course"
+          }
+        },
+        "required": [
+          "course_id"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "students",
+    "courses"
+  ],
+  "additionalProperties": false
+}

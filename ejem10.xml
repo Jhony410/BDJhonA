@@ -1,0 +1,82 @@
+-------------------------- COURSES ----------------------
+
+1. doc("courses.xml")/Course_Catalog/Department/Course/Title
+2. doc("courses.xml")/Course_Catalog/Department[@Code='EE']/Course/Title
+3. doc("courses.xml")/Course_Catalog/Department/Chair
+4. doc("courses.xml")//Course[@Enrollment <200]/Title
+5. doc("courses.xml")/Course_Catalog/Department[@Code='CS']/Course[@Enrollment > 1000]/Title
+6. doc("courses.xml")//Course[Prerequisites/Prereq='CS106B']/Title
+7. doc("courses.xml")//Department[Course/Prerequisites/Prereq='CS106B']/Title
+8. doc("courses.xml")//Course[not(Prerequisites)]/Title
+9. doc("courses.xml")//Instructors/*[Middle_Initial]/First_Name
+10. doc("courses.xml")//Course[contains(Description, 'design')]/Description
+
+11. avg(doc("courses.xml")//Course[@Enrollment]/@Enrollment)
+12. sum(doc("courses.xml")//Course[@Enrollment][../@Code="CS"]/@Enrollment)
+13. doc("courses.xml")//Course[@Enrollment = max(doc("courses.xml")//Course/@Enrollment)]/Title
+14. doc("courses.xml")//Course[count(Prerequisites/Prereq) = 2]/Title
+
+
+---------------------- COUNTRY --------------------------------------------
+1
+for $i in doc("countries.xml")//country
+where $i/@name = "Mongolia"
+return $i/@area
+
+
+2
+for $i in doc("countries.xml")//country
+for $city in $i/city
+where $city/name = $i/@name
+return $city/name
+
+
+3
+let $paises := doc("countries.xml")//country[language = "Russian"]
+let $totalPoblacion := sum($paises/@population)
+let $cantidad := count($paises)
+return $totalPoblacion div $cantidad
+
+
+
+4
+for $i in doc("countries.xml")//country
+let $ciudades := $i/city[population > 3000000]
+where count($ciudades) >= 3
+return $i/@name
+
+
+
+
+5
+<result>
+  <French>{
+    for $i in doc("countries.xml")//country[language = "French"]
+    return <country>{ $i/@name }</country>
+  }</French>
+  <German>{
+    for $ii in doc("countries.xml")//country[language = "German"]
+    return <country>{ $ii/@name }</country>
+  }</German>
+</result>
+
+
+
+6
+let $countries := doc("countries.xml")//country
+let $densidades := 
+  for $i in $countries
+  let $density := xs:decimal($i/@population) div xs:decimal($i/@area)
+  return <entry><country>{$i/@name}</country><density>{$density}</density></entry>
+
+let $max := max($densidades/density)
+let $min := min($densidades/density)
+
+let $countryMax := $densidades[density = $max]/country
+let $countryMin := $densidades[density = $min]/country
+
+return
+<result>
+  <highest density="{$max}">{$countryMax}</highest>
+  <lowest density="{$min}">{$countryMin}</lowest>
+</result>
